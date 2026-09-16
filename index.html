@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国象棋 · 兵种强化版（双人对弈）</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+
+  <header class="topbar">
+    <h1>中国象棋 <span class="sub">兵种强化 · 双人对弈</span></h1>
+    <div class="topbar-actions">
+      <button class="btn" id="btn-sound">🔊 音效</button>
+      <button class="btn off" id="btn-voice">🤐 语音关</button>
+      <button class="btn" id="btn-rules">📖 规则</button>
+      <button class="btn" id="btn-undo">↶ 悔棋</button>
+      <button class="btn primary" id="btn-new">新对局</button>
+    </div>
+  </header>
+
+  <div class="layout">
+
+    <!-- 左：玩家信息 + 强化技能 -->
+    <div class="col left">
+      <div class="card card-b" id="card-b">
+        <div class="card-head">
+          <span class="avatar">将</span>
+          <span class="who">黑方</span>
+          <span class="tag" id="tag-b">等待</span>
+        </div>
+        <div class="row-label">强化次数</div>
+        <div class="uses" id="uses-b"></div>
+        <div class="row-label">当前强化（仅本回合）</div>
+        <div class="enh-list" id="enh-b"></div>
+        <div class="row-label">已吃掉的棋子</div>
+        <div class="cap-list" id="cap-b"></div>
+      </div>
+
+      <div class="card card-r active" id="card-r">
+        <div class="card-head">
+          <span class="avatar">帅</span>
+          <span class="who">红方</span>
+          <span class="tag" id="tag-r">行棋中</span>
+        </div>
+        <div class="row-label">强化次数</div>
+        <div class="uses" id="uses-r"></div>
+        <div class="row-label">当前强化（仅本回合）</div>
+        <div class="enh-list" id="enh-r"></div>
+        <div class="row-label">已吃掉的棋子</div>
+        <div class="cap-list" id="cap-r"></div>
+      </div>
+
+      <div class="panel skill-panel">
+        <h3>强化技能</h3>
+        <div id="skill-bar"></div>
+      </div>
+    </div>
+
+    <!-- 中：棋盘 -->
+    <div class="col board-col">
+      <div class="turnbar">
+        <span class="turn-dot red" id="turn-dot"></span>
+        <span class="turn-text" id="turn-text">红方行棋</span>
+        <span class="turn-sub" id="turn-sub"></span>
+      </div>
+
+      <div class="board-wrap">
+        <svg id="board" viewBox="0 0 920 1020" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="boardBg" x1="0" y1="0" x2="0.35" y2="1">
+              <stop offset="0" stop-color="#f9ebca"></stop>
+              <stop offset="0.55" stop-color="#f1dcae"></stop>
+              <stop offset="1" stop-color="#e2c58c"></stop>
+            </linearGradient>
+          </defs>
+          <g id="layer-board"></g>
+          <g id="layer-marks"></g>
+          <g id="layer-pieces"></g>
+        </svg>
+      </div>
+    </div>
+
+    <!-- 右：记录与对话 -->
+    <div class="col right">
+      <div class="panel">
+        <h3>着法记录</h3>
+        <div id="log-list"></div>
+      </div>
+      <div class="panel">
+        <h3>棋桌对话（嘲讽）</h3>
+        <div id="chat-list"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="toast"></div>
+<div id="modal"><div id="modal-card"></div></div>
+
+<script src="js/engine.js"></script>
+<script src="js/taunts.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>
